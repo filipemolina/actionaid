@@ -1,0 +1,439 @@
+/* RESET */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td { border: 0; outline: 0; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; margin: 0; padding: 0; }
+:focus { outline: 0; }
+ol,ul { list-style: none; }
+div:after,ol:after,form:after,ul:after { display: block; clear: both; visibility: hidden; height: 0; overflow: hidden; }
+h1,h2,h3,h4,h5,h6,h1 a,h2 a,h3 a,h4 a,h5 a,h6 a { vertical-align: top; text-decoration: none; }
+hr { display: none; }
+
+a { text-decoration:none;color:#DB251E; }
+a:hover { text-decoration:underline; }
+
+.replace { overflow: hidden; }
+.replace a {
+	display:block;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.replace strong { position: absolute;top: -9999px; }
+/**/
+
+/*body { overflow:hidden; }*/
+
+/* PLACEHOLDERS COLOR DESCRIPTIONS */
+::-webkit-input-placeholder {color:#dddddd;} /* Navegadores que tenham suporte ao Webkit */
+:-moz-placeholder {color:#dddddd;} /* Firefox 18- */
+::-moz-placeholder {color:#dddddd;} /* Firefox 19+ */
+:-ms-input-placeholder {color:#dddddd;} /* Internet Explorer */
+/**/
+
+body {
+	font-family: Tahoma, Verdana, Tahoma, Arial;
+	font-size:12px;
+	color:#6c6c6c;
+}
+/* FONTS*/
+
+@font-face {
+	font-family: 'Gotham-Light';
+	src: url('../fonts/Gotham-Light.eot?') format('eot'), 
+	     url('../fonts/Gotham-Light.otf')  format('opentype'),
+	     url('../fonts/Gotham-Light.woff') format('woff'), 
+	     url('../fonts/Gotham-Light.ttf')  format('truetype'),
+	     url('../fonts/Gotham-Light.svg#Gotham-Light') format('svg');
+}
+@font-face {
+	font-family: 'Gotham-Book';
+	src: url('../fonts/Gotham-Book.eot?') format('eot'), 
+	     url('../fonts/Gotham-Book.otf')  format('opentype'),
+	     url('../fonts/Gotham-Book.woff') format('woff'), 
+	     url('../fonts/Gotham-Book.ttf')  format('truetype'),
+	     url('../fonts/Gotham-Book.svg#Gotham-Book') format('svg');
+}
+@font-face {
+	font-family: 'Gotham-Bold';
+	src: url('../fonts/Gotham-Bold.eot?') format('eot'), 
+	     url('../fonts/Gotham-Bold.otf')  format('opentype'),
+	     url('../fonts/Gotham-Bold.woff') format('woff'), 
+	     url('../fonts/Gotham-Bold.ttf')  format('truetype'),
+	     url('../fonts/Gotham-Bold.svg#Gotham-Bold') format('svg');
+}
+@font-face {
+	font-family: 'Gotham-Medium';
+	src: url('../fonts/Gotham-Medium.eot?') format('eot'), 
+	     url('../fonts/Gotham-Medium.otf')  format('opentype'),
+	     url('../fonts/Gotham-Medium.woff') format('woff'), 
+	     url('../fonts/Gotham-Medium.ttf')  format('truetype'),
+	     url('../fonts/Gotham-Medium.svg#Gotham-Medium') format('svg');
+}
+@font-face {
+	font-family: 'Gotham-ExtraLight';
+	src: url('../fonts/Gotham-ExtraLight.eot?') format('eot'), 
+	     url('../fonts/Gotham-ExtraLight.otf')  format('opentype'),
+	     url('../fonts/Gotham-ExtraLight.woff') format('woff'), 
+	     url('../fonts/Gotham-ExtraLight.ttf')  format('truetype'),
+	     url('../fonts/Gotham-ExtraLight.svg#Gotham-ExtraLight') format('svg');
+}
+@font-face {
+	font-family: 'Gabriela-Regular';
+	src: url('../fonts/Gabriela-Regular.eot?') format('eot'), 
+	     url('../fonts/Gabriela-Regular.woff') format('woff'), 
+	     url('../fonts/Gabriela-Regular.ttf')  format('truetype'),
+	     url('../fonts/Gabriela-Regular.svg#Gabriela-Regular') format('svg');
+}
+
+/**/
+
+
+#container {
+	margin:0 auto;
+	overflow:hidden;
+	position:relative;
+	width:100%;
+	height:auto;
+}
+#content {
+	overflow:hidden;
+	width:1200px;
+	margin:0 auto;
+	position:relative;
+}
+#container_header {
+	margin:0 auto;
+	overflow:hidden;
+	position:fixed;
+	width:100%;
+	height:110px;
+	background:url(../images/bg-header.png) repeat-x top center;
+	z-index:9999;
+}
+#header {
+	width:1200px;
+	height:110px;
+	display:block;
+	margin:0 auto;
+	z-index:100;
+}
+.lb-actionaid{
+	display:block;
+	width:166px;
+	height:22px;
+	background:url(../images/lb-actionaid.png) no-repeat top center;
+	float:left;
+	margin-top:45px;
+	margin-left:210px;
+}
+.footer-actionaid{
+	display:block;
+	width:166px;
+	height:22px;
+	background:url(../images/footer-actionaid.png) no-repeat top center;
+	float:left;
+}
+.lb-doeumfuturodepresente {
+	display:block;
+	width:232px;
+	height:67px;
+	background:url(../images/lb-doeumfuturodepresente.png) no-repeat top center;
+	float:left;
+	margin-top:16px;
+	margin-left:384px;
+}
+#intro {
+	width:1200px;
+	height:689px;
+	margin-top: 0px;
+	position:relative;
+	background:url(../images/bg-cupcake.jpg) no-repeat center 100px;	
+	color:#fff;
+}
+
+/* ANDAMENTO DA CAMPANHA */
+#andamento_da_campanha {
+	width:1200px;
+	height:297px;
+	text-align:center;
+	padding-top:47px;
+	background:url(../images/bg_andamentodacampanha.png) no-repeat top center;
+}
+.mask-andamento_da_campanha {
+	padding:0px 20px 15px 20px;
+	border-bottom:1px solid #e1e4e9;
+	width:412px;
+	display:block;
+	text-align:center;
+	margin-left:366px;
+}
+.lb-andamento_da_campanha {
+	font-family:Gotham-Light;
+	font-size:26px;
+	text-align:center;
+}
+/**/
+
+#lista_itens_campanha {
+	list-style:none;
+	margin-top:60px;
+}
+#lista_itens_campanha li {
+	float:left;
+	margin-left:45px;
+}
+#lista_itens_campanha li .obj-info-campanha {
+	float:left;
+	margin-right:16px;
+}
+#lista_itens_campanha li .info-campanha {
+	float:left;
+	position:relative;
+	text-align:left;
+	line-height:46px;
+}
+#lista_itens_campanha li .info-campanha .numeros-campanha {
+	display:block;
+	color:#c40a24;
+	font-size:60px;
+	font-family:Gotham-Medium;
+}
+#lista_itens_campanha li .info-campanha .label-campanha {
+	display:block;
+	color:#828282;
+	font-size:14px;
+	font-family:Gotham-Book;
+}
+.rscifrao-info-campanha {
+	display:block;
+	float:left;
+	margin-right:6px;
+	color:#c40a24;
+	font-size:18px;
+	font-family:Gotham-Medium;
+	line-height:18px;
+}
+.numero-atingidos {
+	display:block;
+	float:right;
+}
+.OpcaoFormaPagamento, .OpcaoValorDoacao {
+	float: left;
+	height: 22px;
+	width: 20px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 3px;
+	cursor:pointer;
+}
+.label-OpcaoFormaPagamento {
+	font-family:Gotham-Book;
+	font-size:18px;
+	float:right;
+	margin:0px 0px 0px 3px;	
+}
+
+/* FOOTER */
+	#footer {
+		width:100%;
+		height:85px;
+		background:#df0a24;
+	}
+	#footer_content {
+		width:1200px;
+		height:85px;
+		background:#df0a24;
+		margin:0 auto;
+	}
+/**/
+
+.bt-green {
+	position:relative;
+	clear:both;
+	display:block;
+	float:left;
+	-webkit-border-radius:4px;
+	border-radius:4px;	
+	background:#5ec946;
+	color:#fff;
+	font-family:Gotham-Medium;
+	font-size:18px;
+	border-bottom:3px solid #359c1e;
+	text-transform:uppercase;
+	text-decoration:none;
+	cursor:pointer;
+	padding:14px 31px;
+}
+.bt-green:hover {
+	text-decoration:none;
+	background:#55bb3e;
+}
+.bt-green:active {
+}
+
+.without-select-text {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/* PREENCHA OS DADOS */
+	label {
+		float:left;
+		font-family:Gotham-Book;
+		font-size:18px;
+		display:block;
+		margin-top:12px;
+		color:#6c6c6c;
+	}
+	
+	#section_dados_pessoais label {
+		width:125px;
+		text-align:right;
+	}
+	#subsection_dados_pagamento {
+		margin-top:25px;
+		clear:both;
+		float:left;
+	}
+	#subsection_dados_pagamento label {
+		width:240px;
+		text-align:right;
+	}	
+	#subsection_dados_pagamento_termos label {
+		font-family:Gotham-Book;
+		font-size:14px;
+		margin:0px;
+	}
+	.label-break {
+		margin-top:25px;
+	}
+	
+	#content input[type=text], textarea {
+		border:2px solid #d3d3d3;
+		border-radius:4px;
+		-webkit-border-radius: 4px;
+		height:13px;
+		padding:16px 11px;
+		color:#6c6c6c;
+		font-family:Gotham-Book;
+		font-size:15px;
+		margin-left:10px;
+		/*box-shadow: 0 1px 0 white,inset 0 1px 1px rgba(0, 0, 0, .17);*/
+	}
+	input:focus, textarea:focus {
+		background-color:#f6f7fa;
+	}
+	
+	.div-field {
+		clear:both;
+		float:left;
+		margin-bottom:24px;
+	}
+	.break {
+		clear:both;
+		float:left;
+	}
+	.label-box {
+		font-family:Gotham-Light;
+		font-size:12px;
+		float:right;
+		margin:3px 0px 0px 3px;
+	}
+	
+/**/
+
+.lb-titulo_campanha {
+	font-size:50px;
+	font-family:Gabriela-Regular;
+	position:absolute;
+	top:248px;
+	left:610px;
+	text-transform:uppercase;
+	line-height:63px;
+}
+.lb-autor_campanha {
+	font-size:16px;
+	font-family:Gotham-Bold;
+	position:absolute;
+	top:380px;
+	left:590px;
+	border-top:1px solid #9b9273;
+	border-bottom:1px solid #9b9273;
+	padding:16px 0px 25px 22px;
+	height:9px;
+	width:446px;
+}
+.lb-descricao_campanha {
+	font-size:22px;
+	font-family:Gabriela-Regular;
+	position:absolute;
+	top:442px;
+	left:610px;
+	line-height:24px;
+}
+.lb-causa {
+	background:#df0a24;
+	color:#fff;
+	font-size:13px;
+	font-family:Gotham-Bold;
+	padding:6px;
+	top: 176px;
+	left: 69px;
+	position: absolute;
+}
+.lb-titulo_causa {
+	color:#df0a24;
+	font-size:15px;
+	font-family:Gotham-Bold;
+	position:absolute;
+	top:210px;
+	left:12px;
+}
+
+.box-foto_causa, .box-foto_autor {
+	background:#fff;
+	padding:12px 0px;
+	height:218px;
+	width:197px;
+	position:absolute;
+	-webkit-box-shadow: 0 6px 12px rgba(0,0,0,.6);
+	-moz-box-shadow: 0 6px 12px rgba(0,0,0,.6);	
+}
+.box-foto_causa {
+	z-index:999;
+	top:330px;
+	left:134px;
+	-webkit-transform: rotate(-4deg);
+	-moz-transform: rotate(-4deg);	
+	-o-transform:rotate(-4deg);	
+	-ms-transform:rotate(-4deg);
+	filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1.5);
+}
+.box-foto_autor {
+	z-index:100;
+	top:258px;
+	left:318px;
+	-webkit-transform: rotate(4deg);
+	-moz-transform: rotate(4deg);	
+	-o-transform:rotate(4deg);	
+	-ms-transform:rotate(4deg);
+	filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1.5);
+}
+
+.container-foto_causa, .container-foto_autor {
+	width: 177px;
+	height: 180px;
+	background: #000;
+	margin-left: 10px;
+}
+#bt_doar_agora {
+	font-family:Gotham-Medium;
+	font-size:22px;
+	display:block;
+	padding:15px 63px;
+	position:absolute;
+	top:515px;
+	left:655px;
+}

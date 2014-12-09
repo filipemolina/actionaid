@@ -1,0 +1,130 @@
+html, body {height: 100%;}
+
+body {
+	height: 100%; 
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 13px; 
+	margin: 0;
+	padding: 0; 
+	background:#eaeaea url(../images/bg_body_left.png) repeat-y left; color: #666;
+}
+
+p {
+	padding: 0; 
+	margin: 0;
+}
+
+ul, li {
+	list-style: none; 
+	padding: 0; 
+	margin: 0;
+}
+
+img {
+	border: none;
+}
+
+h1, h2, h3, h4, h5 {
+	padding: 0; 
+	margin: 0;
+}
+
+#logincontainer {
+	width: 385px;  
+	margin: 0 auto; 
+	margin-top: 90px;
+}
+
+#loginbox {
+	border-radius: 20px; 
+	-moz-border-radius: 20px; 
+	background: #df0a24 url(../images/bg_login_box.png) repeat-x top; 
+	border-bottom: 1px solid #000;
+}
+
+#loginheader {
+	text-align: center;
+	padding: 15px 0; 
+	background: url(../images/bg_login_header.png) repeat-x bottom; 
+	border-bottom: 1px solid #000; 
+	border-top-left-radius: 20px; 
+	border-top-right-radius: 20px; 
+	-moz-border-radius-topright: 20px; 
+	-moz-border-radius-topleft: 20px;
+}
+
+#loginheader h2{
+	font-size:28px;
+	color:#fff;
+}
+
+#innerlogin {
+	width: 260px; 
+	margin: 0 auto; 
+	text-align: center;
+	 padding: 15px 20px 30px 20px;
+}
+
+.logininput {
+	width: 240px;
+	margin: 10px 0;
+	padding: 17px 10px;
+	font-size: 15px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+}
+
+.logininput {
+	background: #fff url(../images/bg_login_input.png) repeat-x top;
+}
+
+.logininput:focus {
+	border: 3px solid yellow; 
+	border-radius: 8px;
+	-moz-border-radius: 8px;	
+	color: #000;
+}
+				
+.loginbtn {
+	background: #55bb3e url(../images/bg_login_btn.png) repeat-x top; 
+	border-radius: 8px; 
+	-moz-border-radius: 8px; 
+	border: none; 
+	font-size: 25px; 
+	font-weight: 700; 
+	color: #e5e5e5; 
+	width: 260px;
+	padding: 11px 0; 
+	margin: 5px 0 0 0; 
+	display: block; 
+	cursor: pointer; 
+	letter-spacing: -1px;
+}
+		
+.loginbtn:hover {
+	background: #55bb3e url(../images/bg_login_btn.png) -0 -60px; 
+	cursor: pointer; 
+	color: #fff;
+}
+
+#innerlogin p {
+	color: #ddd;
+	font-weight: 700;
+	text-shadow: 1px 1px 1px #222;
+}
+				
+#innerlogin p a {
+	background: #ccc url(../images/bg_forgotten_password.png) repeat-x top;
+	text-shadow: 1px 1px 1px #fff;
+	color: #666;
+	font-size: 11px;
+	padding: 4px 10px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	text-decoration: none;
+}
+
+#innerlogin p a:hover {
+	background: #ccc url(../images/bg_forgotten_password.png) 0 -25px;
+	color: #333;
+}
