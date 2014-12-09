@@ -148,6 +148,32 @@
 
 		
 	}
+
+	//Caso seja fornecido um token de transação, quer dizer que essa página foi chamada pelo arquivo "retorno_paypal.php", após uma transação
+	//bem sucedida.
+
+	if(isset($_GET['token']))
+	{
+		//Obter o token
+		$token = $_GET['token'];
+
+		//Verificar se o token existe na tabela de pagamentos, caso verdadeiro abrir o popup para a foto
+		$query = $con->query("SELECT * FROM users_payement WHERE cod_transacao = '$token'");
+
+		$numero  = $con->num_rows($query);
+
+		//Caso seja encontrada uma transação com esse token, proceder para a página da campanha
+		//para a tela de agradecimento e gravação da foto do usuário
+
+		if($numero > 0)
+		{
+			$abrir_popup = true;
+		}
+		else
+		{
+			$abrir_popup = false;
+		}
+	}
 	
 	//echo "INSERT INTO doadores_img (user_id, user_id_doador) VALUES ('".$user_id."', '".$graphObject['id']."'";
 	$select_usuario = $con->query("SELECT * FROM users WHERE user_id = '".$user_id."'");
@@ -226,13 +252,31 @@
 		    cidade: $('#cidade').get(0)
 		   	});
 			
-	    $('.teste_animate').hover(function(){
-			$(this).animate({
-				color: '#ffffff'
-			}, 1500);
-		});	
+		    $('.teste_animate').hover(function(){
+				$(this).animate({
+					color: '#ffffff'
+				}, 1500);
+			});
 	
 			//$('input[name="CEPDoador"]').mask("99.999-999");
+
+			<?php //Inserir essa linha de Javascript apenas se a doação for bem sucedida ?>
+
+			<?php if($abrir_popup): ?>
+
+				//Abrir o popup para o usuário gravar sua foto na campanha
+
+				$(".loading").fadeIn();
+
+			<?php else: ?>
+
+				//<?php echo $numero; ?>
+
+			<?php endif; ?>
+
+
+
+
 			
 			$('input').ezMark();	
 
@@ -503,23 +547,25 @@
 									console.log("Resposta:");
 									console.log(resposta);
 
-									$.openDOMWindow({
-										borderSize:0,
-										borderColor:'transparent',
-										height:544, 
-										width:827, 
-										positionType:'absolute', 
-										positionTop:100, 
-										positionLeft:($(window).width()/2 - 408),  
-										loader:1, 
-										loaderImagePath:'/landing/den/images/sw-denver/loading.gif', 
-										loaderHeight:16, 
-										loaderWidth:17,
-										windowPadding:0,
-										windowSource:'iframe', 
-										windowHTTPType:'get',
-										windowSourceURL: resposta			
-									});
+									window.location.href = resposta;
+
+									// $.openDOMWindow({
+									// 	borderSize:0,
+									// 	borderColor:'transparent',
+									// 	height:544, 
+									// 	width:827, 
+									// 	positionType:'absolute', 
+									// 	positionTop:100, 
+									// 	positionLeft:($(window).width()/2 - 408),  
+									// 	loader:1, 
+									// 	loaderImagePath:'/landing/den/images/sw-denver/loading.gif', 
+									// 	loaderHeight:16, 
+									// 	loaderWidth:17,
+									// 	windowPadding:0,
+									// 	windowSource:'iframe', 
+									// 	windowHTTPType:'get',
+									// 	windowSourceURL: resposta			
+									// });
 
 								} else {
 								
