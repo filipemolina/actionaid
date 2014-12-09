@@ -580,3 +580,10 @@ body {
 	opacity: 1;
 	cursor: pointer;
 }
+
+/* Owl Carousel */
+
+.carrossel .owl-prev { float: left; }
+.carrossel .owl-next { float: right; }
+
+.owl-theme .owl-controls { margin-top: 20px !important; }

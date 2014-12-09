@@ -265,6 +265,8 @@
 	<link rel="stylesheet" href="stylesheets/colorbox.css" />
 	<link rel="stylesheet" type="text/css" href="stylesheets/base.css" />	
 	<link rel="stylesheet" type="text/css" href="stylesheets/sexyalertbox.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/owl.carousel.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/owl.theme.css" />
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	
@@ -277,6 +279,7 @@
 	<script type="text/javascript" language="Javascript" src="javascripts/ui.datepicker-pt-BR.js"></script>	
 	<script type="text/javascript" language="Javascript" src="javascripts/jquery.maskMoney.js"></script>	
 	<script type="text/javascript" language="Javascript" src="javascripts/sexyalertbox.v1.2.jquery.js"></script>			
+	<script type="text/javascript" language="Javascript" src="javascripts/owl.carousel.min.js"></script>
 	<script type="text/javascript" language="javascript">
 		/*function caixa_de_alerta(mensagem, campo)
 		{
@@ -340,7 +343,16 @@
 		        	target.html(remain + ' caracteres restantes');		        	
 		        }
 
-		    });			
+		    });
+
+		    //Carrossel
+
+		    $('.carrossel').owlCarousel({
+		    	items          : 3,
+		    	pagination     : false,
+		    	navigation     : true,
+		    	navigationText : ["Anteriores", "Próximas"],
+		    });
 		    
 			$( "#Fim" ).datepicker();
 			$( "#Fim" ).datepicker('option', 'minDate', new Date());
@@ -1113,11 +1125,24 @@
 						</div>						
 					</div>	
 				</div>	
-				<div id="como-funciona" style="margin-top:0px;width: 100%;height:1235px;float:left;clear:both;">
+				<div id="como-funciona" style="margin-top:0px;width: 100%;float:left;clear:both;padding-bottom: 50px;">
 					<h2 style="font-family:Gotham-Light;font-size:31px;margin:50px 0px 0px 243px;width: 295px;margin: 0 auto;margin-top: 50px;">TOP CAMPANHAS</h2>
-					<div style="width: 940px; margin: 0 auto;">
+					<div class="carrossel" style="width: 940px; margin: 0 auto;">
 					<?php 
-						$select_usuario = $con->query("SELECT * FROM users WHERE user_id != 1391292311159873 ORDER BY valor_arrecadado DESC LIMIT 6");
+
+						$query_thumbnails = "SELECT users.*, SUM(users_payement.valor_doacao) AS total 
+												FROM users, users_payement 
+
+												WHERE users.user_id != 1391292311159873 
+												AND users.user_id = users_payement.user_id 
+												AND users_payement.status = 'Pago' 
+												AND users_payement.id_transacao IS NOT NULL
+
+												GROUP BY users.user_id 
+												ORDER BY total DESC
+												LIMIT 6;";
+
+						$select_usuario = $con->query($query_thumbnails);
 						while($usuario = $con->fetch_object($select_usuario)){
 						
 							$caminho_layout = "images/previews/preview".$usuario->layout."_home.jpg";
@@ -1204,6 +1229,7 @@
 						</div>
 					</div>
 					<?php } ?>
+						<div style="clear: both;"></div>
 					</div>
 					<!--<div style="width: 800px; margin: 0 auto; padding-top: 50px;">
 						<div class="valor">
