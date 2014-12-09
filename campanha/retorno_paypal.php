@@ -110,20 +110,19 @@ if($transacao['ack'] == "Success" && $transacao['status'] == "Completed")
 {
 	//Atualizar o status da transação para "Pago"
 
-	$query = $con->query("UPDATE users_payement SET status = 'Pago' WHERE cod_transacao = '".$token."';");	
+	$query = $con->query("UPDATE users_payement SET status = 'Pago' WHERE cod_transacao = '".$token."';");
 
-	echo "<h1>Transação Efetuada com Sucesso! Token: $token</h1>";
-
-	//Criar uma função que verifica se o token existe na tabela de pagamentos, caso verdadeiro abrir o popup para a foto
-	//Escrevendo nesse arquivo para fins de teste
-
+	//Obter o id do usuario que criou a campanha
 	$query = $con->query("SELECT * FROM users_payement WHERE cod_transacao = '$token'");
+	$obj = $con->fetch_object($query);
 
-	$numero  = $con->num_rows($query);
+	//Redirecionar para a Index da campanha com o id do usuário e o token da doação
+	$url = "index.php?id=$obj->user_id&token=$token";
 
-	echo "<p>Número de transações encontradas: $numero</p>";
+	header("Location: $url");
+
 }
 else
 {
-	echo $transacao['status']." -> ".$transacao['errorcode']." -> ".$responseNvp['PAYMENTINFO_0_PENDINGREASON']."<br/>";
+	echo $transacao['ack'] . " -> " .$transacao['status']." -> ".$transacao['errorcode']." -> ".$responseNvp['PAYMENTINFO_0_PENDINGREASON']."<br/>";
 }
