@@ -533,6 +533,10 @@
 							processData: false,			
 							success: function (resposta) {
 								if (resposta) {
+
+									window.location.href = resposta;
+
+
 									/*$("#preview_campanha").html('');
 									$("#preview_campanha").append(resposta);
 									$('.step-bar-vermelho_3').animate({
@@ -543,11 +547,6 @@
 										$('#step_2').fadeOut();
 										$('.loading').fadeOut();									
 									});	*/
-
-									console.log("Resposta:");
-									console.log(resposta);
-
-									window.location.href = resposta;
 
 									// $.openDOMWindow({
 									// 	borderSize:0,
