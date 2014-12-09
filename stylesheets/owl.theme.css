@@ -11,19 +11,20 @@
 /* Styling Next and Prev buttons */
 
 .owl-theme .owl-controls .owl-buttons div{
-	color: #FFF;
+	color: #5b5b5b;
 	display: inline-block;
 	zoom: 1;
-	*display: inline;/*IE7 life-saver */
 	margin: 5px;
-	padding: 3px 10px;
+	padding: 6px 21px;
 	font-size: 12px;
-	-webkit-border-radius: 30px;
-	-moz-border-radius: 30px;
-	border-radius: 30px;
-	background: #869791;
-	filter: Alpha(Opacity=50);/*IE7 fix*/
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: #e3e3e3;
+	filter: Alpha(Opacity=50);
 	opacity: 0.5;
+	font-weight: bold;
+	border-bottom: 2px solid #828282;
 }
 /* Clickable class fix problem with hover on touch devices */
 /* Use it for non-touch hover action */

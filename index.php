@@ -351,7 +351,7 @@
 		    	items          : 3,
 		    	pagination     : false,
 		    	navigation     : true,
-		    	navigationText : ["Anteriores", "Próximas"],
+		    	navigationText : ["ANTERIORES", "PRÓXIMAS"],
 		    });
 		    
 			$( "#Fim" ).datepicker();
@@ -1229,7 +1229,6 @@
 						</div>
 					</div>
 					<?php } ?>
-						<div style="clear: both;"></div>
 					</div>
 					<!--<div style="width: 800px; margin: 0 auto; padding-top: 50px;">
 						<div class="valor">
