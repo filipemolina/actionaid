@@ -696,8 +696,12 @@
 									$diferenca = $time_final - $time_hoje;
 								}
 								// Calcula a diferença de dias
-								$dias = (int)floor( $diferenca / (60 * 60 * 24)); // 225 dias	
-								echo $dias; 
+								$dias = (int)floor( $diferenca / (60 * 60 * 24)); // 225 dias
+								if ($dias < 0)
+								{
+									$dias = 0;
+								} 
+								echo $dias;
 							?>
 							</span>
 							<span class="label-campanha lb-dias_restantes">Dias restantes</span>
