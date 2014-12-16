@@ -611,7 +611,7 @@
 	<img src="images/Web-Banner.jpg" style="display: none;"/>
 	<div id="container_header">
 			<div id="header">	
-				<h1><a href="index.php" class="replace lb-actionaid"><strong>ActionAid</strong></a></h1>
+				<h1><a href="/index.php" class="replace lb-actionaid"><strong>ActionAid</strong></a></h1>
 				<h2 class="replace lb-doeumfuturodepresente"><strong>ActionAid</strong></h1>
 			</div>
 	</div>
@@ -735,12 +735,17 @@
 								$dias = (int)floor( $diferenca / (60 * 60 * 24)); // 225 dias
 								if ($dias < 0)
 								{
-									$dias = 0;
+									$dias = '';
+									$texto = 'Encerrada';
 								} 
+								else
+								{
+									$texto = 'Dias Restantes';
+								}
 								echo $dias;
 							?>
 							</span>
-							<span class="label-campanha lb-dias_restantes">Dias restantes</span>
+							<span class="label-campanha lb-dias_restantes"><?php echo $texto; ?></span>
 						</div>
 					</li>
 				</ul>

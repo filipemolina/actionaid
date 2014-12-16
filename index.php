@@ -281,6 +281,9 @@
 	<script type="text/javascript" language="Javascript" src="javascripts/sexyalertbox.v1.2.jquery.js"></script>			
 	<script type="text/javascript" language="Javascript" src="javascripts/owl.carousel.min.js"></script>
 	<script type="text/javascript" language="javascript">
+
+		var dadosFormulario;
+
 		/*function caixa_de_alerta(mensagem, campo)
 		{
 		 $.msgbox(mensagem, {
@@ -429,7 +432,8 @@
 	
 			$('.teste_valor').click(function() {
 				mensagem = 'Esse ano resolvi fazer uma comemoração diferente. Para isso, preciso que você me ajude fazendo uma doação para Act!onaid.';
-				$('#Descricao').val($('#Descricao').val()+ mensagem); 
+				$('#Descricao').val($('#Descricao').val()+ mensagem);
+				$(".countdown").trigger('keyup');
 			});	
 			
 			$('.escreva_sua').click(function() {
@@ -518,14 +522,33 @@
 					});
 				}
 				if(next_step == '4') {
+
+					console.log(dadosFormulario);
+
 					$(this).parent().hide();
-					
-					$('body, html').animate({scrollTop:0},600);										
-					$('.step-bar-vermelho_4').animate({
-						'width' : '+=136px'
-					}, 1000, function() {
-						$('.step-bar_4').addClass('step-bar-ativo');
-						$('#step_'+next_step).fadeIn();
+
+					$.ajax({
+						type: "POST",
+						url: "salvar_dados.php",
+						data: dadosFormulario,
+						processData: false,
+						contentType: false,					
+						success: function (resposta) {
+							if (resposta) {
+
+								$('body, html').animate({scrollTop:0},600);										
+								$('.step-bar-vermelho_4').animate({
+									'width' : '+=136px'
+								}, 1000, function() {
+									$('.step-bar_4').addClass('step-bar-ativo');
+									$('#step_'+next_step).fadeIn();
+								});
+								
+								return false;
+							} else {
+							
+							}
+						}
 					});
 				}
 			});
@@ -886,12 +909,14 @@
 				} else {
 					valor = $('input[name="OutroValor"]').val();
 					valor = valor.replace('R$ ','');
-				}				
+				}
+
+				dadosFormulario = new FormData(this);
 				
 				$.ajax({
 					type: "POST",
-					url: "salvar_dados.php",
-					data: new FormData( this ),
+					url: "info_campanha.php",
+					data: dadosFormulario,
 					processData: false,
 					contentType: false,					
 					success: function (resposta) {
@@ -905,25 +930,7 @@
 								$('#step_3').fadeIn();
 								$('#step_2').fadeOut();
 								$('.loading').fadeOut();									
-							});							
-							/*$("#resultado").html(resposta);
-							$("#resultado .acender_vela_sucesso").show();
-							$.blockUI({ 
-								message: $("#resultado"), 
-								css: { top: '20%' } 
-							}); 
-							$('.blockOverlay').click( function() {
-								$.unblockUI();
-								window.location.href = '?pg=showvelas';
-							}); 
-							$('.btnok_vela').click( function() {
-								$.unblockUI();
-								window.location.href = '?pg=showvelas';
-							}); 
-							setTimeout( function() { 
-								$.unblockUI();
-								window.location.href = '?pg=showvelas';
-							}, 60000);*/
+							});
 							
 							return false;
 						} else {
@@ -1086,10 +1093,10 @@
 					<div style="width: 800px; margin: 0 auto; padding-top: 50px;">
 						<div class="valor">
 							<img class="obj-info-campanha" src="campanha/images/obj-atingidos.png" alt="" style="float: left; margin-right: 16px;">
-							<div class="info-campanha" style="float: left; line-height: 46px; position: relative; text-align: left; width: 340px;">
+							<div class="info-campanha" style="float: left; line-height: 46px; position: relative; text-align: left; width: 340px; margin-top: -18px;">
 								<div style="float:left; width: 300px;">
-									<span class="rscifrao-info-campanha" style="color: #C40A24; display: block; float: left; font-family: Gotham-Medium; font-size: 18px; line-height: 18px; margin-right: 6px; margin-top: -18px;">R$</span>
-									<span class="numeros-campanha numero-atingidos" style="color: #C40A24; display: block; font-family: Gotham-Medium; font-size: 60px; margin-top: -18px;">
+									<span class="rscifrao-info-campanha" style="color: #C40A24; display: block; float: left; font-family: Gotham-Medium; font-size: 18px; line-height: 18px; margin-right: 6px;">R$</span>
+									<span class="numeros-campanha numero-atingidos" style="color: #C40A24; display: block; font-family: Gotham-Medium; font-size: 60px;">
 										<?php 
 											$valor_arrecadado = $con->query("SELECT SUM(valor_doacao) AS total FROM users_payement WHERE id_transacao IS NOT NULL AND status='Pago' ");
 											$doacao = $con->fetch_object($valor_arrecadado);
