@@ -2,6 +2,7 @@
 
 
 include_once "config/connection.class.php";
+require_once("vendor/Email.php");
 
 function ConsultaConfig($campo){
 	global $con;
@@ -67,9 +68,60 @@ if ($usar_foto != 'on') {
 	$total  = $con->num_rows($verifica_usuario);
 	
 if($total > 0) {
-	$update = $con->query("UPDATE users SET nome = '".$nome."', causa = '".$causa."', email = '".$email."', campanha = '".$campanha."', data_fim = '".$data_fim."', foto_campanha = '".$file_name."', valor_arrecadado = '".$valor_arrecadado."', descricao = '".$descricao."', layout = '".$layout."' WHERE user_id = '".$user_id."'");
+	$update = $con->query("UPDATE users SET 
+							nome = '".$nome."', 
+							causa = '".$causa."', 
+							email = '".$email."', 
+							campanha = '".$campanha."', 
+							data_fim = '".$data_fim."', 
+							foto_campanha = '".$file_name."', 
+							valor_arrecadado = '".$valor_arrecadado."', 
+							descricao = '".$descricao."', 
+							layout = '".$layout."' 
+
+							WHERE user_id = '".$user_id."'"
+						);
 	} else {
-	$insert = $con->query("INSERT INTO users (user_id, nome, causa, email, campanha, data_fim, foto_campanha, valor_arrecadado, descricao, layout, created) VALUES ('".$user_id."', '".$nome."', '".$causa."', '".$email."', '".$campanha."', '".$data_fim."', '".$file_name."', '".$valor_arrecadado."', '".$descricao."', '".$layout."', NOW())");
+	$insert = $con->query("INSERT INTO users (
+												user_id, nome, causa, email, campanha, data_fim, foto_campanha, 
+												valor_arrecadado, descricao, layout, created
+											) 
+							VALUES (
+								'".$user_id."', 
+								'".$nome."', 
+								'".$causa."', 
+								'".$email."', 
+								'".$campanha."', 
+								'".$data_fim."', 
+								'".$file_name."', 
+								'".$valor_arrecadado."', 
+								'".$descricao."', 
+								'".$layout."', 
+								NOW())"
+						);
+
+
+	//Selecionar o email à ser enviado de acordo com a campanha escolhida.
+	
+	switch ($causa) {
+		case "1":
+			$tipo_email = "mailFome.html";
+			break;
+
+		case "2":
+			$tipo_email = "mailEducacao.html";
+			break;
+
+		case "3":
+			$tipo_email = "mailMulheres.html";
+			break;
+	}
+
+	//Enviar o email
+
+	$mail_marketing = new Email();
+	$resultado = $mail_marketing->enviarHTML($email, "Muito Obrigado por Criar Sua Campanha", $nome, "emails/criacao_campanha/".$tipo_email);
+
 }
 
 $caminho_layout = "images/previews/preview".$layout.".jpg";
