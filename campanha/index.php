@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 	header('Access-Control-Allow-Origin: *');
 	header('Access-Control-Allow-Methods: GET, POST');
 	header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
@@ -484,16 +485,6 @@
 							processData: false,			
 							success: function (resposta) {
 								if (resposta) {
-									/*$("#preview_campanha").html('');
-									$("#preview_campanha").append(resposta);
-									$('.step-bar-vermelho_3').animate({
-										'width' : '+=136px'
-									}, 1000, function() {
-										$('.step-bar_3').addClass('step-bar-ativo');
-										$('#step_3').fadeIn();
-										$('#step_2').fadeOut();
-										$('.loading').fadeOut();									
-									});	*/
 									console.log(resposta);
 									PagSeguroLightbox({
 										code: resposta
@@ -533,6 +524,10 @@
 							processData: false,			
 							success: function (resposta) {
 								if (resposta) {
+
+									window.location.href = resposta;
+
+
 									/*$("#preview_campanha").html('');
 									$("#preview_campanha").append(resposta);
 									$('.step-bar-vermelho_3').animate({
@@ -543,11 +538,6 @@
 										$('#step_2').fadeOut();
 										$('.loading').fadeOut();									
 									});	*/
-
-									console.log("Resposta:");
-									console.log(resposta);
-
-									window.location.href = resposta;
 
 									// $.openDOMWindow({
 									// 	borderSize:0,
@@ -742,8 +732,12 @@
 									$diferenca = $time_final - $time_hoje;
 								}
 								// Calcula a diferença de dias
-								$dias = (int)floor( $diferenca / (60 * 60 * 24)); // 225 dias	
-								echo $dias; 
+								$dias = (int)floor( $diferenca / (60 * 60 * 24)); // 225 dias
+								if ($dias < 0)
+								{
+									$dias = 0;
+								} 
+								echo $dias;
 							?>
 							</span>
 							<span class="label-campanha lb-dias_restantes">Dias restantes</span>

@@ -1,6 +1,7 @@
 <?php
 
 include_once "../config/connection.class.php";
+require_once('../vendor/Email.php');
 
 function ConsultaConfig($campo){
 	global $con;
@@ -147,13 +148,51 @@ curl_close($curl);
 $xml= simplexml_load_string($xml);
 if(count($xml -> error) > 0){
 
-var_dump($xml->error);
-//Insira seu código de tratamento de erro, talvez seja útil enviar os códigos de erros.
-echo $xml->code;
+	var_dump($xml->error);
+	//Insira seu código de tratamento de erro, talvez seja útil enviar os códigos de erros.
+	echo $xml->code;
 
-//header('Location: erro.php?tipo=dadosInvalidos');
-exit;
+	//header('Location: erro.php?tipo=dadosInvalidos');
+	exit;
 }
+
 $insert = $con->query("INSERT INTO users_payement (user_id, nome, email, cep, endereco, numero, complemento, bairro, cidade, estado, telefone, celular, data_aniversario, valor_doacao, status, cod_transacao, newsletter_email, newsletter_celular, created) VALUES ('".$user_id."', '".$nome."', '".$email."', '".$cep."', '".$endereco."', '".$numero."', '".$complemento."', '".$bairro."', '".$cidade."', '".$estado."', '".$telefone."', '".$celular."', '".$aniversario."', '".$valor_doacao."', '".$status."', '".$cod_transacao."', '".$newsletter_email."', '".$newsletter_email."', NOW())");
+
+/*------------------------------------------------------------------
+| Enviar e-mail através do Mandrill
+------------------------------------------------------------------*/
+
+//Descobrir qual foi a causa da campanha para a qual o usuário fez a doação
+
+$query = $con->query("SELECT users.causa FROM users, users_payement WHERE users.user_id = users_payement.user_id AND users_payement.cod_transacao = '$cod_transacao';");
+
+$resultado = $con->fetch_object($query);
+
+$causa = $resultado->causa;
+
+//Selecionar o modelo do e-mail
+
+switch ($causa) {
+	case "1":
+		$tipo_email = "mailFome.html";
+		break;
+
+	case "2":
+		$tipo_email = "mailEducacao.html";
+		break;
+
+	case "3":
+		$tipo_email = "mailMulheres.html";
+		break;
+}
+
+//Enviar o e-mail pelo Mandrill
+$enviar_email = new Email();
+$resultado = $enviar_email->enviarHTML($email, "Obrigado pela sua doação!", $nome, "../emails/doacao/$tipo_email");
+
+/*------------------------------------------------------------------
+| Fim
+------------------------------------------------------------------*/
+
 echo $xml->code;
 //header('Location: https://pagseguro.uol.com.br/v2/checkout/payment.html?code=' . $xml -> code);

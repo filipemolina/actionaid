@@ -258,7 +258,7 @@
 	<meta property="og:image" content="http://www.renoi.de/images/lg.jpg"/>
 	<meta property="og:site_name" content="Doe um futuro de presente"/>
 	<meta property="og:description" content="Mudar o mundo é mais simples do que parece. Começa com você. Então por que não trocar aqueles presentes que você não precisa por uma causa? CRIE SUA CAMPANHA DE DOAÇÃO E APOIE A ACTIONAID. SEUS AMIGOS VÃO CURTIR ESSA IDÉIA!"/>		
-  	<title>Aplicativo ActionAid</title>	
+  	<title>ActionAid - Doe Um Futuro de Presente</title>	
 	
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 	
@@ -506,7 +506,7 @@
 				if(next_step == '3') {
 					$('body').css('overflow', 'hidden');
 					$('html').css('overflow', 'hidden');
-					$('#content').css('height', '800px');				
+					//$('#content').css('height', '800px');				
 					$(this).parent().hide();
 					
 					$('body, html').animate({scrollTop:0},600);					
@@ -539,7 +539,7 @@
 				if(next_step == '1') {
 					$('body').css('overflow', 'hidden');
 					$('html').css('overflow', 'hidden');
-					$('#content').css('height', '800px');					
+					//$('#content').css('height', '800px');					
 					$('.step-bar-vermelho_2').animate({
 						'width' : '-=136px'
 					}, 1000, function() {
@@ -562,7 +562,7 @@
 				if(next_step == '3') {
 					$('body').css('overflow', 'hidden');
 					$('html').css('overflow', 'hidden');
-					$('#content').css('height', '800px');				
+					//$('#content').css('height', '800px');				
 					$('.step-bar-vermelho_4').animate({
 						'width' : '-=136px'
 					}, 1000, function() {
@@ -1049,7 +1049,7 @@
 					Mudar o mundo é mais simples do que parece. Começa com você. Então por<br />
 					que não trocar aqueles presentes que você não precisa por uma causa?<br />
 					<br /><br />
-					Pode ser Natal, aniversário, Pascoa ou qualquer data que seja importante para<br />
+					Pode ser Natal, aniversário, Páscoa ou qualquer data que seja importante para<br />
 					você. Porque o mais importante é ajudar a mudar vidas.<br />
 					<br /><br />
 					<font style="font-family:Gotham-Bold;font-size:18px;color:#494949;">CRIE SUA CAMPANHA DE DOAÇÃO E APOIE A <span style="color:#c80a24">ACTIONAID</span>.<BR />
@@ -1088,8 +1088,8 @@
 							<img class="obj-info-campanha" src="campanha/images/obj-atingidos.png" alt="" style="float: left; margin-right: 16px;">
 							<div class="info-campanha" style="float: left; line-height: 46px; position: relative; text-align: left; width: 340px;">
 								<div style="float:left; width: 300px;">
-									<span class="rscifrao-info-campanha" style="color: #C40A24; display: block; float: left; font-family: Gotham-Medium; font-size: 18px; line-height: 18px; margin-right: 6px;">R$</span>
-									<span class="numeros-campanha numero-atingidos" style="color: #C40A24; display: block; font-family: Gotham-Medium; font-size: 60px;">
+									<span class="rscifrao-info-campanha" style="color: #C40A24; display: block; float: left; font-family: Gotham-Medium; font-size: 18px; line-height: 18px; margin-right: 6px; margin-top: -18px;">R$</span>
+									<span class="numeros-campanha numero-atingidos" style="color: #C40A24; display: block; font-family: Gotham-Medium; font-size: 60px; margin-top: -18px;">
 										<?php 
 											$valor_arrecadado = $con->query("SELECT SUM(valor_doacao) AS total FROM users_payement WHERE id_transacao IS NOT NULL AND status='Pago' ");
 											$doacao = $con->fetch_object($valor_arrecadado);
@@ -1212,12 +1212,11 @@
 												// Calcula a diferença de dias
 												$dias = (int)floor( $diferenca / (60 * 60 * 24)); // 225 dias	
 												if ($dias < 0) {
-													echo 0;
+													echo "Encerrada";
 												} else {
-													echo $dias;
+													echo $dias." dias";
 												}
-											?>											
-											 dias</span> 
+											?></span> 
 											<br />
 											<img src="images/icon_arrecadado_home_campanha.png" /><span style=" margin-left: 5px; font-family: Gotham-Book; font-size: 12px; color: #545454;">R$ 
 											<?php echo number_format($doacao->total_doacao, 2, ',', '.'); ?>
