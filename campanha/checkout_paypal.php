@@ -111,52 +111,6 @@ $insert = $con->query(
         '".$responseNvp['TOKEN']."', 
         '".$dados['AceitoEmail']."', 
         '".$dados['AceitoCelular']."', NOW())");
-
-/*------------------------------------------------------------------
-| Enviar e-mail através do Mandrill
-------------------------------------------------------------------*/
-
-//Selecionar a causa para a qual o usuário doou
-
-$query = $con->query("SELECT causa FROM users WHERE user_id = ".$dados['UserId'].";");
-
-$resultado = $con->fetch_object($query);
-
-$causa = $resultado->causa;
-
-//Selecionar o modelo do e-mail
-
-switch ($causa) 
-{
-    case "1":
-        $tipo_email = "mailFome.html";
-        break;
-
-    case "2":
-        $tipo_email = "mailEducacao.html";
-        break;
-
-    case "3":
-        $tipo_email = "mailMulheres.html";
-        break;
-}
-
-//Enviar o e-mail pelo Mandrill
-$enviar_email = new Email();
-$resultado = $enviar_email->enviarHTML($dados['EmailDoador'], "Obrigado pela sua doação!", $dados['NomeDoador'], "../emails/doacao/$tipo_email");
-
-if($resultado['erro'])
-{
-    file_put_contents("paypal.txt", $resultado['mensagem']);
-}
-else
-{
-    file_put_contents("paypal.txt", "Email enviado com sucesso para $email");
-}
-
-/*------------------------------------------------------------------
-| Fim
-------------------------------------------------------------------*/
   
 //Se a operação tiver sido bem sucedida, redirecionamos o cliente para o
 //ambiente de pagamento.

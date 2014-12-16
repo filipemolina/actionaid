@@ -2,6 +2,7 @@
 
 //Conexão com o banco de dados
 include_once "../config/connection.class.php";
+require_once("../vendor/Email.php");
 
 //Inclui o arquivo que contém a função sendNvpRequest
 require 'sendNvpRequest.php';
@@ -115,6 +116,54 @@ if($transacao['ack'] == "Success" && $transacao['status'] == "Completed")
 	//Obter o id do usuario que criou a campanha
 	$query = $con->query("SELECT * FROM users_payement WHERE cod_transacao = '$token'");
 	$obj = $con->fetch_object($query);
+
+	/*------------------------------------------------------------------
+	| Enviar e-mail através do Mandrill
+	------------------------------------------------------------------*/
+
+	//Selecionar a causa para a qual o usuário doou
+
+	$query = $con->query("SELECT users_payement.nome, users_payement.email, users.causa FROM users, users_payement WHERE users.user_id = users_payement.user_id AND users_payement.cod_transacao = '$token';");
+
+	$resultado = $con->fetch_object($query);
+
+	$causa = $resultado->causa;
+	$nome = $resultado->nome;
+	$email = $resultado->email;
+
+	//Selecionar o modelo do e-mail
+
+	switch ($causa) 
+	{
+	    case "1":
+	        $tipo_email = "mailFome.html";
+	        break;
+
+	    case "2":
+	        $tipo_email = "mailEducacao.html";
+	        break;
+
+	    case "3":
+	        $tipo_email = "mailMulheres.html";
+	        break;
+	}
+
+	//Enviar o e-mail pelo Mandrill
+	$enviar_email = new Email();
+	$resultado = $enviar_email->enviarHTML($email, "Obrigado pela sua doação!", $nome, "../emails/doacao/$tipo_email");
+
+	if($resultado['erro'])
+	{
+	    file_put_contents("paypal.txt", $resultado['mensagem']);
+	}
+	else
+	{
+	    file_put_contents("paypal.txt", "Email enviado com sucesso para $email");
+	}
+
+	/*------------------------------------------------------------------
+	| Fim
+	------------------------------------------------------------------*/
 
 	//Redirecionar para a Index da campanha com o id do usuário e o token da doação
 	$url = "index.php?id=$obj->user_id&token=$token";
