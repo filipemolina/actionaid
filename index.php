@@ -344,7 +344,7 @@
 		        }
 
 		    });
-
+		     
 		    //Carrossel
 
 		    $('.carrossel').owlCarousel({
@@ -429,7 +429,8 @@
 	
 			$('.teste_valor').click(function() {
 				mensagem = 'Esse ano resolvi fazer uma comemoração diferente. Para isso, preciso que você me ajude fazendo uma doação para Act!onaid.';
-				$('#Descricao').val($('#Descricao').val()+ mensagem); 
+				$('#Descricao').val($('#Descricao').val()+ mensagem);
+				setTimeout($(".countdown").trigger('keyup'),2008); 
 			});	
 			
 			$('.escreva_sua').click(function() {
@@ -1778,7 +1779,8 @@
 
 		<div id="footer">
 			<p style="width: 160px; margin: 0 auto;"><a href="http://www.3aworldwide.com.br" target="blank"><img src="/images/assinatura.png"></a></p>
-		</div>			
+		</div>
+		
 	</div>
 </body>
 </html>
