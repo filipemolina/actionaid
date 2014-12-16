@@ -7,7 +7,7 @@ h1,h2,h3,h4,h5,h6,h1 a,h2 a,h3 a,h4 a,h5 a,h6 a { vertical-align: top; text-deco
 hr { display: none; }
 
 a { text-decoration:none;color:#DB251E; }
-a:hover { text-decoration:underline; }
+a:hover {; }
 
 .replace { overflow: hidden; }
 .replace a {

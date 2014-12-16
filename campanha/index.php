@@ -969,7 +969,7 @@
 									</div>							
 							</div>
 							<button style="border: 0px none; background-color: transparent; margin-left: 110px; cursor: pointer; position: relative; margin-top: 35px; width: 295px; height: 62px;" type="submit" id="btn_pagseguro">
-								<span class="bt-green" style="width: 226px; font-family: Gotham-Medium; font-size: 22px; display: block; padding: 15px 31px; position: absolute; left: 0; top: 0px;">DOAR</span>			
+								<span class="bt-green" style="width: 226px; font-family: Gotham-Medium; font-size: 22px; display: block; padding: 15px 31px; position: absolute; left: 0; top: 0px;">DOAR PAGSEGURO</span>			
 							</button>
 							<button style="border: 0px none; background-color: transparent; margin-left: 110px; cursor: pointer; position: relative; margin-top: 35px; width: 295px; height: 62px;" type="submit" id="btn_paypal">
 								<span class="bt-green" style="width: 226px; display:none; font-family: Gotham-Medium; font-size: 22px; display: block; padding: 15px 31px; position: absolute; left: 0px; top: 0px;">DOAR Paypal</span>			
