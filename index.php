@@ -347,7 +347,7 @@
 		        }
 
 		    });
-
+		     
 		    //Carrossel
 
 		    $('.carrossel').owlCarousel({
@@ -1785,7 +1785,8 @@
 
 		<div id="footer">
 			<p style="width: 160px; margin: 0 auto;"><a href="http://www.3aworldwide.com.br" target="blank"><img src="/images/assinatura.png"></a></p>
-		</div>			
+		</div>
+		
 	</div>
 </body>
 </html>
