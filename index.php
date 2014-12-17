@@ -349,13 +349,14 @@
 		    });
 		     
 		    //Carrossel
-
+		    console.log("Antes");
 		    $('.carrossel').owlCarousel({
 		    	items          : 3,
 		    	pagination     : false,
 		    	navigation     : true,
 		    	navigationText : ["ANTERIORES", "PRÓXIMAS"],
 		    });
+		    console.log("Depois");
 		    
 			$( "#Fim" ).datepicker();
 			$( "#Fim" ).datepicker('option', 'minDate', new Date());
@@ -1060,7 +1061,7 @@
 					você. Porque o mais importante é ajudar a mudar vidas.<br />
 					<br /><br />
 					<font style="font-family:Gotham-Bold;font-size:18px;color:#494949;">CRIE SUA CAMPANHA DE DOAÇÃO E APOIE A <span style="color:#c80a24">ACTIONAID</span>.<BR />
-					SEUS AMIGOS VÃO CURTIR ESSA IDÉIA!</font>
+					SEUS AMIGOS VÃO CURTIR ESSA IDEIA!</font>
 				</p>
 				<?php echo '<a href="' . $helper->getLoginUrl( array( 'email', 'user_friends', 'user_about_me', 'publish_actions' ) ) . '" style="text-decoration: none; margin: 0 auto; width: 345px; display: block;">' ?> <span class="bt-green without-select-text" style="/* margin-left:100px; */margin-top:41px;font-family:Gotham-Medium;font-size:20px; /* margin-left: 240px; *//* text-align: center; *//* margin: 0 auto; *//* width: 275px; */">Criar minha campanha</span></a>
 				
@@ -1302,7 +1303,7 @@
 						<div class="box-foto-causa">
 							<img src="images/causas/um_mundo_sem_fome.jpg" alt="" />
 							<div class="descricao-foto-causa">
-								Embora, em 2010, o direito a alimentação tenha sido incluído na constituição, milhões de brasileiros continuam passando fome. Para fazer esse direito valer, a ActionAid investe em capacitação no meio rural, produção de conhecimento e mobilização pública.
+								Embora, em 2010, o direito à alimentação tenha sido incluído na constituição, milhões de brasileiros continuam passando fome. Para fazer esse direito valer, a ActionAid investe em capacitação no meio rural, produção de conhecimento e mobilização pública.
 							</div>
 						</div>
 						<span class="titulo-causa" style="width: 140px; margin-left: 45px;">Um mundo sem fome</span>
