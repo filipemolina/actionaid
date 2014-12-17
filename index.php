@@ -257,7 +257,7 @@
 	<meta property="og:url" content="http://www.doeumfuturodepresente.org.br/"/>
 	<meta property="og:image" content="http://www.renoi.de/images/lg.jpg"/>
 	<meta property="og:site_name" content="Doe um futuro de presente"/>
-	<meta property="og:description" content="Mudar o mundo é mais simples do que parece. Começa com você. Então por que não trocar aqueles presentes que você não precisa por uma causa? CRIE SUA CAMPANHA DE DOAÇÃO E APOIE A ACTIONAID. SEUS AMIGOS VÃO CURTIR ESSA IDÉIA!"/>		
+	<meta property="og:description" content="Mudar o mundo é mais simples do que parece. Começa com você. Então por que não trocar aqueles presentes que você não precisa por uma causa? CRIE SUA CAMPANHA DE DOAÇÃO E APOIE A ACTIONAID. SEUS AMIGOS VÃO CURTIR ESSA IDEIA!"/>		
   	<title>ActionAid - Doe Um Futuro de Presente</title>	
 	
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />

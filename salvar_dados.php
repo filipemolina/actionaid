@@ -121,7 +121,6 @@ if($total > 0) {
 
 	$mail_marketing = new Email();
 	$resultado = $mail_marketing->enviarHTML($email, "Muito Obrigado por Criar Sua Campanha", $nome, "emails/criacao_campanha/".$tipo_email);
-
 }
 
 $caminho_layout = "images/previews/preview".$layout.".jpg";
